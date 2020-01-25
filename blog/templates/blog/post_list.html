@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body{
+            background-color: black;
+        }
+        h2{
+            color:yellow;
+            text-align:center;
+            font-family:ALGERIAN;
+        }
+        h3{
+            color:cyan;
+        }
+        p{
+            color:white;
+        }
+        strong{
+            color:white;
+        }
+        em{
+            color:white;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>Smit's Blog</title>
 </head>
@@ -13,6 +35,13 @@
     <em>Emphasis normal</em>
     <br>
     <p>No Emphasis</p>
+    {%for post in posts%}
+    <div>
+        <h2>Title : {{post.title}}</h2>
+        <h3>Author : {{post.author}}</h3>
+        <p>{{post.text|linebreaksbr}}</p>
+    </div>
+    {% endfor %}
     {% endblock %}
 </body>
 </html>
