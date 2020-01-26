@@ -1,47 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <style>
-        body{
-            background-color: black;
-        }
-        h2{
-            color:yellow;
-            text-align:center;
-            font-family:ALGERIAN;
-        }
-        h3{
-            color:cyan;
-        }
-        p{
-            color:white;
-        }
-        strong{
-            color:white;
-        }
-        em{
-            color:white;
-        }
-    </style>
-    <meta charset="UTF-8">
-    <title>Smit's Blog</title>
-</head>
-<body>
-    {% block content %}
-    <h2>Welcome to Django with C2OO13 -> {{name}}</h2>
-    <br>
-    <strong>Emphasis Strong</strong>
-    <br>
-    <em>Emphasis normal</em>
-    <br>
-    <p>No Emphasis</p>
-    {%for post in posts%}
-    <div>
-        <h2>Title : {{post.title}}</h2>
-        <h3>Author : {{post.author}}</h3>
-        <p>{{post.text|linebreaksbr}}</p>
-    </div>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
     {% endfor %}
-    {% endblock %}
-</body>
-</html>
+{% endblock %}
