@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Django Girls blog</title><style>
+        <title>Django C2OO13 -> Smit Blog</title><style>
             h1 a, h2 a {
                 color: #C25100;
                 font-family: 'Lobster';
@@ -64,7 +64,10 @@
     </head>
     <body>
         <div class="page-header">
-            <h1><a href="/">Django Girls Blog</a></h1>
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+            <h1><a href="/">Django C2OO13 -> Smit Blog</a></h1>
         </div>
 
         <div class="content container">
